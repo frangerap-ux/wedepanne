@@ -22,6 +22,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: '3.24.0'
 
       - name: Installer Python
         uses: actions/setup-python@v5
@@ -34,7 +35,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Construire APK
-        run: flet build apk --no-rich-output < /dev/null
+        run: flet build apk < /dev/null
 
       - name: Publier APK
         uses: actions/upload-artifact@v4
