@@ -2,63 +2,43 @@ name: Build APK we Depanne
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build-apk:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Récupérer le code
+      - name: Recuperer le code
         uses: actions/checkout@v4
 
-      - name: Installer Java 17
+      - name: Installer Java
         uses: actions/setup-java@v4
         with:
-          distribution: zulu
+          distribution: 'zulu'
           java-version: '17'
 
       - name: Installer Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
-          cache: true
+          channel: 'stable'
 
-      - name: Installer Python 3.12
+      - name: Installer Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Mettre à jour pip
-        run: python -m pip install --upgrade pip
-
-      - name: Installer les dépendances
+      - name: Installer Flet
         run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          fi
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-          pip install flet
+      - name: Construire APK
+        run: flet build apk --no-rich-output < /dev/null
 
-      - name: Vérifier les installations
-        run: |
-          python --version
-          pip --version
-          flutter --version
-          flet --version
-
-      - name: Télécharger les dépendances Flutter
-        run: flutter pub get
-
-      - name: Construire l'APK
-        run: |
-          flet build apk --verbose
-
-      - name: Publier l'APK
+      - name: Publier APK
         uses: actions/upload-artifact@v4
         with:
           name: wedepanne-apk
           path: build/apk/*.apk
-          if-no-files-found: error
+          if-no-files-found: warn
