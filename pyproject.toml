@@ -1,0 +1,16 @@
+[project]
+name = "wedepanne"
+version = "1.0.0"
+description = "we Depanne - Mise en relation clients / artisans"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["flet"]
+
+[tool.flet]
+org = "com.wedepanne"
+product = "we Depanne"
+company = "we Depanne"
+copyright = "Copyright (C) 2026 we Depanne"
+
+[tool.flet.app]
+path = "."
