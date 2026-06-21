@@ -122,7 +122,7 @@ def main(page: ft.Page):
     def champ(label, hint, password=False, ref=None):
         tf = ft.TextField(hint_text=hint, password=password, can_reveal_password=password,
                           width=330, height=48, border_radius=14, filled=True, bgcolor=GRIS_CHAMP,
-                          border_color="transparent", content_padding=ft.Padding(16, 0, 16, 0))
+                          border_color="transparent", content_padding=ft.padding.only(left=16, top=0, right=16, bottom=0))
         if ref is not None:
             ref["field"] = tf
         return ft.Column([
@@ -201,7 +201,7 @@ def main(page: ft.Page):
                             nav_item("📋", "Services", "commandes", actif),
                             nav_item("💬", "Messages", "messages", actif),
                             nav_item("👤", "Profil", "profil", actif)], spacing=0),
-            bgcolor="white", border=ft.Border(top=ft.BorderSide(1, "#EAECEF")))
+            bgcolor="white", border=ft.border.only(top=ft.BorderSide(1, "#EAECEF")))
 
     def lancer(nom, emoji):
         def h(e):
@@ -250,7 +250,7 @@ def main(page: ft.Page):
             ft.Container(height=14),
             ft.Container(content=ft.Text("En créant un compte, vous acceptez nos Conditions Générales et notre Politique de Confidentialité.",
                                          size=10, color="#9AA3AF", text_align=ft.TextAlign.CENTER),
-                         padding=ft.Padding(30, 0, 30, 0)),
+                         padding=ft.padding.only(left=30, top=0, right=30, bottom=0)),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=8))
 
     # INSCRIPTION DÉTAILLÉE
@@ -282,7 +282,7 @@ def main(page: ft.Page):
             ft.Container(content=ft.Column([
                 ft.Text("Créer un compte", size=26, weight=ft.FontWeight.BOLD, color=NOIR),
                 ft.Text("Remplissez vos informations pour commencer.", size=13, color=GRIS_TXT),
-            ], spacing=2), padding=ft.Padding(24, 0, 24, 0)),
+            ], spacing=2), padding=ft.padding.only(left=24, top=0, right=24, bottom=0)),
             ft.Container(height=14),
             champ("Nom complet", "Jean Dupont", ref=ref_nom),
             champ("Numéro de téléphone", "+229 XX XX XX XX"),
@@ -295,7 +295,7 @@ def main(page: ft.Page):
                    spacing=0, vertical_alignment=ft.CrossAxisAlignment.CENTER),
             ft.Container(height=6),
             btn_noir("S'INSCRIRE", inscrire),
-            ft.Container(content=ft.Text("— Ou —", size=12, color="#9AA3AF"), margin=ft.Margin(0, 8, 0, 8)),
+            ft.Container(content=ft.Text("— Ou —", size=12, color="#9AA3AF"), margin=ft.margin.only(left=0, top=8, right=0, bottom=8)),
             btn_social("🟢", "Continuer avec Google", lambda _: go("accueil"), logo_fichier="google.png"),
             btn_social("", "Continuer avec Apple", lambda _: go("accueil"), logo_fichier="apple.png"),
             ft.Row([ft.Text("Vous avez déjà un compte ?", size=12, color=GRIS_TXT),
@@ -315,14 +315,14 @@ def main(page: ft.Page):
             ft.Container(content=ft.Column([
                 ft.Text("Bon retour 👋", size=26, weight=ft.FontWeight.BOLD, color=NOIR),
                 ft.Text("Connectez-vous pour continuer.", size=13, color=GRIS_TXT),
-            ], spacing=2), padding=ft.Padding(24, 0, 24, 0)),
+            ], spacing=2), padding=ft.padding.only(left=24, top=0, right=24, bottom=0)),
             ft.Container(height=18),
             champ("Adresse e-mail ou téléphone", "votre.email@exemple.com"),
             champ("Mot de passe", "••••••••", password=True),
             ft.Row([btn_lien("Mot de passe oublié ?", lambda _: go("connexion"), color=BLEU_FONCE)],
                    alignment=ft.MainAxisAlignment.END),
             btn_noir("SE CONNECTER", lambda _: go("accueil")),
-            ft.Container(content=ft.Text("— Ou —", size=12, color="#9AA3AF"), margin=ft.Margin(0, 8, 0, 8)),
+            ft.Container(content=ft.Text("— Ou —", size=12, color="#9AA3AF"), margin=ft.margin.only(left=0, top=8, right=0, bottom=8)),
             btn_social("🟢", "Continuer avec Google", lambda _: go("accueil"), logo_fichier="google.png"),
             btn_social("", "Continuer avec Apple", lambda _: go("accueil"), logo_fichier="apple.png"),
             ft.Row([ft.Text("Pas encore de compte ?", size=12, color=GRIS_TXT),
@@ -354,7 +354,7 @@ def main(page: ft.Page):
             ft.Container(content=ft.Column([
                 ft.Text("Dossier Artisan", size=24, weight=ft.FontWeight.BOLD, color=NOIR),
                 ft.Text("Rejoignez le réseau d'experts certifiés.", size=13, color=GRIS_TXT)], spacing=2),
-                padding=ft.Padding(24, 0, 24, 0)),
+                padding=ft.padding.only(left=24, top=0, right=24, bottom=0)),
             ft.Container(height=10),
             champ("Métier", "ex : Électricien, Mécanicien…"),
             champ("Zone de déplacement", "ex : Cotonou, Calavi…"),
@@ -367,12 +367,12 @@ def main(page: ft.Page):
 
     def ec_attente():
         phone_body.controls.append(ft.Column([
-            ft.Container(content=ft.Text("⏳", size=64), margin=ft.Margin(0, 70, 0, 20)),
+            ft.Container(content=ft.Text("⏳", size=64), margin=ft.margin.only(left=0, top=70, right=0, bottom=20)),
             ft.Text("Dossier en cours d'analyse", size=20, weight=ft.FontWeight.BOLD, color=NOIR,
                     text_align=ft.TextAlign.CENTER),
             ft.Container(content=ft.Text("Nous vérifions vos documents sous 24h pour vous attribuer le badge Certifié 🌟.",
                                          size=13, color=GRIS_TXT, text_align=ft.TextAlign.CENTER),
-                         padding=ft.Padding(34, 12, 34, 36)),
+                         padding=ft.padding.only(left=34, top=12, right=34, bottom=36)),
             btn_noir("Découvrir l'application", lambda _: go("accueil")),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER))
 
@@ -387,24 +387,24 @@ def main(page: ft.Page):
                 ft.Text("Comment pouvons-nous vous aider ?", size=13, color=GRIS_TXT),
             ], spacing=2, expand=True),
         ], spacing=12, vertical_alignment=ft.CrossAxisAlignment.CENTER),
-            padding=ft.Padding(22, 22, 22, 0))
+            padding=ft.padding.only(left=22, top=22, right=22, bottom=0))
 
         search = ft.Container(
             content=ft.Row([ft.Text("Rechercher un service...", color="#9AA3AF", size=14, expand=True),
                             ft.Text("🔍", size=15)]),
-            bgcolor=GRIS_CHAMP, padding=ft.Padding(16, 14, 16, 14), border_radius=16,
-            margin=ft.Margin(22, 16, 22, 16))
+            bgcolor=GRIS_CHAMP, padding=ft.padding.only(left=16, top=14, right=16, bottom=14), border_radius=16,
+            margin=ft.margin.only(left=22, top=16, right=22, bottom=16))
 
         banner = ft.Container(
             content=ft.Image(src="banniere.png", width=336),
             border_radius=18, clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
-            margin=ft.Margin(22, 0, 22, 22))
+            margin=ft.margin.only(left=22, top=0, right=22, bottom=22))
 
         titre = ft.Container(content=ft.Row([
             ft.Text("Catégories de Service", size=18, weight=ft.FontWeight.BOLD, color=NOIR),
             ft.TextButton(content=ft.Text("Voir tout", size=13, color=NOIR, weight=ft.FontWeight.BOLD),
                           on_click=lambda _: go("commandes"))],
-            alignment=ft.MainAxisAlignment.SPACE_BETWEEN), padding=ft.Padding(22, 0, 22, 4))
+            alignment=ft.MainAxisAlignment.SPACE_BETWEEN), padding=ft.padding.only(left=22, top=0, right=22, bottom=4))
 
         # Carte ronde : cercle cliquable (image) + nom du métier EN DESSOUS
         def carte(emoji, label, service, bg, texte_blanc=False):
@@ -419,12 +419,12 @@ def main(page: ft.Page):
                 contenu = ft.Container(
                     content=ft.Text(emoji, size=26),
                     width=64, height=64, border_radius=32, bgcolor=bg,
-                    alignment=ft.Alignment(0, 0))
+                    alignment=ft.alignment.center)
             cercle = ft.ElevatedButton(
                 content=contenu, on_click=lancer(service, emoji),
                 width=64, height=64,
                 style=ft.ButtonStyle(bgcolor=bg, elevation=0,
-                                     padding=ft.Padding(0, 0, 0, 0),
+                                     padding=ft.padding.only(left=0, top=0, right=0, bottom=0),
                                      shape=ft.RoundedRectangleBorder(radius=32)))
             return ft.Column([
                 cercle,
@@ -451,7 +451,7 @@ def main(page: ft.Page):
                                  clip_behavior=ft.ClipBehavior.ANTI_ALIAS),
             on_click=lambda _: go("commandes"), width=64, height=64,
             style=ft.ButtonStyle(bgcolor="white", elevation=0,
-                                 padding=ft.Padding(0, 0, 0, 0),
+                                 padding=ft.padding.only(left=0, top=0, right=0, bottom=0),
                                  shape=ft.RoundedRectangleBorder(radius=32)))
         l2.controls[3] = ft.Column([
             plus_cercle,
@@ -469,7 +469,7 @@ def main(page: ft.Page):
         titre = ft.Container(content=ft.Column([
             ft.Text("Tous les services", size=22, weight=ft.FontWeight.BOLD, color=NOIR),
             ft.Text("Choisissez un service pour trouver un expert près de vous.", size=12, color=GRIS_TXT)],
-            spacing=3), padding=ft.Padding(22, 6, 22, 14))
+            spacing=3), padding=ft.padding.only(left=22, top=6, right=22, bottom=14))
 
         def rond(emoji, label):
             fichier = CAT_FICHIERS.get(label)
@@ -478,7 +478,7 @@ def main(page: ft.Page):
                                     width=44, height=44, border_radius=22,
                                     clip_behavior=ft.ClipBehavior.ANTI_ALIAS)
             return ft.Container(content=ft.Text(emoji, size=20), width=44, height=44,
-                                border_radius=22, bgcolor=GRIS_CHAMP, alignment=ft.Alignment(0, 0))
+                                border_radius=22, bgcolor=GRIS_CHAMP, alignment=ft.alignment.center)
 
         def ligne(emoji, label):
             return ft.ElevatedButton(
@@ -491,7 +491,7 @@ def main(page: ft.Page):
                 style=ft.ButtonStyle(bgcolor="white", elevation=0,
                                      shape=ft.RoundedRectangleBorder(radius=16),
                                      side=ft.BorderSide(1, "#EAECEF"),
-                                     padding=ft.Padding(10, 0, 14, 0)))
+                                     padding=ft.padding.only(left=10, top=0, right=14, bottom=0)))
 
         lignes = ft.Column([ligne(e, l) for e, l in toutes_categories], spacing=10,
                            horizontal_alignment=ft.CrossAxisAlignment.CENTER)
@@ -509,24 +509,24 @@ def main(page: ft.Page):
         phone_body.controls.append(ft.Column([
             ft.Row([btn_retour(lambda _: go("accueil"))], alignment=ft.MainAxisAlignment.START),
             ft.Container(content=img_ou_emoji("localisation.png", "📍", 110, 110, 64),
-                         margin=ft.Margin(0, 40, 0, 20)),
+                         margin=ft.margin.only(left=0, top=40, right=0, bottom=20)),
             ft.Text("Autoriser la localisation", size=20, weight=ft.FontWeight.BOLD, color=NOIR,
                     text_align=ft.TextAlign.CENTER),
             ft.Container(content=ft.Text(f"we Depanne a besoin de votre position pour trouver un expert en « {service_selectionne['nom']} » près de vous.",
                                          size=13, color=GRIS_TXT, text_align=ft.TextAlign.CENTER),
-                         padding=ft.Padding(34, 12, 34, 30)),
+                         padding=ft.padding.only(left=34, top=12, right=34, bottom=30)),
             btn_noir("Autoriser 📍", autoriser),
             btn_gris("Refuser", lambda _: go("refus")),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=12))
 
     def ec_refus():
         phone_body.controls.append(ft.Column([
-            ft.Container(content=ft.Text("📍", size=56), margin=ft.Margin(0, 80, 0, 20)),
+            ft.Container(content=ft.Text("📍", size=56), margin=ft.margin.only(left=0, top=80, right=0, bottom=20)),
             ft.Text("Position requise", size=20, weight=ft.FontWeight.BOLD, color=NOIR,
                     text_align=ft.TextAlign.CENTER),
             ft.Container(content=ft.Text("Sans votre position, impossible de trouver un expert à proximité.",
                                          size=13, color=GRIS_TXT, text_align=ft.TextAlign.CENTER),
-                         padding=ft.Padding(34, 12, 34, 30)),
+                         padding=ft.padding.only(left=34, top=12, right=34, bottom=30)),
             btn_noir("Réessayer", lambda _: go("localisation")),
             btn_lien("Retour à l'accueil", lambda _: go("accueil")),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=12))
@@ -535,7 +535,7 @@ def main(page: ft.Page):
         phone_body.controls.append(ft.Column([
             ft.Row([btn_retour(lambda _: go("accueil"))], alignment=ft.MainAxisAlignment.START),
             ft.Container(content=ft.Text(service_selectionne["emoji"] or "🔍", size=64),
-                         margin=ft.Margin(0, 50, 0, 20)),
+                         margin=ft.margin.only(left=0, top=50, right=0, bottom=20)),
             ft.ProgressRing(color=BLEU, width=40, height=40),
             ft.Container(height=20),
             ft.Text("Recherche d'un expert", size=20, weight=ft.FontWeight.BOLD, color=NOIR,
@@ -544,7 +544,7 @@ def main(page: ft.Page):
                     text_align=ft.TextAlign.CENTER),
             ft.Container(content=ft.Text("📍 Localisation activée — recherche du professionnel le plus proche...",
                                          size=13, color=GRIS_TXT, text_align=ft.TextAlign.CENTER),
-                         padding=ft.Padding(34, 8, 34, 0)),
+                         padding=ft.padding.only(left=34, top=8, right=34, bottom=0)),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=8))
 
     def ec_trouve():
@@ -567,11 +567,11 @@ def main(page: ft.Page):
                               spacing=3)], spacing=15),
             ft.Text(f"Tarif indicatif : {m['tarif']}", size=13, weight=ft.FontWeight.BOLD, color=VERT)],
             spacing=12),
-            bgcolor="white", border=ft.Border.all(1, "#EAECEF"), border_radius=18,
-            padding=18, margin=ft.Margin(22, 0, 22, 20), width=332)
+            bgcolor="white", border=ft.border.all(1, "#EAECEF"), border_radius=18,
+            padding=18, margin=ft.margin.only(left=22, top=0, right=22, bottom=20), width=332)
 
         phone_body.controls.append(ft.Column([
-            ft.Container(content=ft.Text("✅", size=54), margin=ft.Margin(0, 36, 0, 10)),
+            ft.Container(content=ft.Text("✅", size=54), margin=ft.margin.only(left=0, top=36, right=0, bottom=10)),
             ft.Text("Expert trouvé près de vous !", size=20, weight=ft.FontWeight.BOLD, color=NOIR,
                     text_align=ft.TextAlign.CENTER),
             ft.Container(height=10), carte,
@@ -583,14 +583,14 @@ def main(page: ft.Page):
     # MESSAGES
     def ec_messages():
         titre = ft.Container(content=ft.Text("Messages", size=22, weight=ft.FontWeight.BOLD, color=NOIR),
-                             padding=ft.Padding(22, 20, 22, 14))
+                             padding=ft.padding.only(left=22, top=20, right=22, bottom=14))
         def ouvrir(i):
             def h(e): etat["conv"] = i; go("conversation")
             return h
         if not conversations:
             phone_body.controls.extend([titre, ft.Container(
                 content=ft.Text("Aucune conversation. Lancez une recherche !", size=13, color=GRIS_TXT,
-                                text_align=ft.TextAlign.CENTER), padding=ft.Padding(30, 20, 30, 0))])
+                                text_align=ft.TextAlign.CENTER), padding=ft.padding.only(left=30, top=20, right=30, bottom=0))])
         else:
             lignes = []
             for i, c in enumerate(conversations):
@@ -606,7 +606,7 @@ def main(page: ft.Page):
                     on_click=ouvrir(i), width=332, height=74,
                     style=ft.ButtonStyle(bgcolor="white", elevation=0,
                                          shape=ft.RoundedRectangleBorder(radius=16),
-                                         side=ft.BorderSide(1, "#EAECEF"), padding=ft.Padding(12, 0, 12, 0))))
+                                         side=ft.BorderSide(1, "#EAECEF"), padding=ft.padding.only(left=12, top=0, right=12, bottom=0))))
             phone_body.controls.extend([titre, ft.Column(lignes, spacing=10,
                                                          horizontal_alignment=ft.CrossAxisAlignment.CENTER)])
         bottom_container.content = menu_bas("Messages")
@@ -621,7 +621,7 @@ def main(page: ft.Page):
             ft.ElevatedButton(content=ft.Text("WhatsApp", size=12, color="white", weight=ft.FontWeight.BOLD),
                               on_click=wa, style=ft.ButtonStyle(bgcolor="#25D366",
                                                                 shape=ft.RoundedRectangleBorder(radius=10)))]),
-            padding=ft.Padding(8, 8, 12, 8), border=ft.Border(bottom=ft.BorderSide(1, "#EAECEF")))
+            padding=ft.padding.only(left=8, top=8, right=12, bottom=8), border=ft.border.only(bottom=ft.BorderSide(1, "#EAECEF")))
         bulles = []
         for msg in c["messages"]:
             moi = msg["de"] == "moi"
@@ -637,7 +637,7 @@ def main(page: ft.Page):
         barre = ft.Container(content=ft.Row([ch,
             ft.ElevatedButton(content=ft.Text("➤", size=18, color="white"), on_click=envoyer,
                               style=ft.ButtonStyle(bgcolor=NOIR, shape=ft.RoundedRectangleBorder(radius=50)))],
-            spacing=8), padding=ft.Padding(12, 10, 12, 14))
+            spacing=8), padding=ft.padding.only(left=12, top=10, right=12, bottom=14))
         phone_body.controls.extend([header, ft.Column(bulles, spacing=6), barre])
 
     # PROFIL
@@ -656,11 +656,11 @@ def main(page: ft.Page):
                 on_click=importer_photo, height=44,
                 style=ft.ButtonStyle(bgcolor=GRIS_CHAMP, elevation=0,
                                      shape=ft.RoundedRectangleBorder(radius=22),
-                                     padding=ft.Padding(18, 0, 18, 0))),
+                                     padding=ft.padding.only(left=18, top=0, right=18, bottom=0))),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=2),
-            padding=ft.Padding(22, 24, 22, 14))
+            padding=ft.padding.only(left=22, top=24, right=22, bottom=14))
         section = ft.Container(content=ft.Text("Paramètres", size=14, weight=ft.FontWeight.BOLD, color=GRIS_TXT),
-                               padding=ft.Padding(22, 0, 22, 8))
+                               padding=ft.padding.only(left=22, top=0, right=22, bottom=8))
         def lp(emoji, label, on_click):
             return ft.ElevatedButton(content=ft.Row([
                 ft.Text(emoji, size=18), ft.Text(label, size=14, color=NOIR, expand=True),
@@ -668,7 +668,7 @@ def main(page: ft.Page):
                 on_click=on_click, width=332, height=54,
                 style=ft.ButtonStyle(bgcolor="white", elevation=0,
                                      shape=ft.RoundedRectangleBorder(radius=16),
-                                     side=ft.BorderSide(1, "#EAECEF"), padding=ft.Padding(14, 0, 14, 0)))
+                                     side=ft.BorderSide(1, "#EAECEF"), padding=ft.padding.only(left=14, top=0, right=14, bottom=0)))
         def set_mode(mode):
             def h(e): page.theme_mode = mode; go("profil")
             return h
@@ -690,7 +690,7 @@ def main(page: ft.Page):
             lp("🕘", "Historique de mes activités", lambda _: go("historique")),
             lp("🎁", "Code de parrainage", lambda _: go("parrainage")),
             ft.Container(content=ft.Text("Affichage :", size=13, weight=ft.FontWeight.BOLD, color=NOIR),
-                         padding=ft.Padding(0, 8, 0, 4)),
+                         padding=ft.padding.only(left=0, top=8, right=0, bottom=4)),
             toggle, ft.Container(height=8),
             btn_noir("🚪  Se déconnecter", lambda _: go("deconnexion")),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=10)
@@ -699,10 +699,10 @@ def main(page: ft.Page):
 
     def ec_deconnexion():
         phone_body.controls.append(ft.Column([
-            ft.Container(content=ft.Text("🚪", size=56), margin=ft.Margin(0, 90, 0, 20)),
+            ft.Container(content=ft.Text("🚪", size=56), margin=ft.margin.only(left=0, top=90, right=0, bottom=20)),
             ft.Container(content=ft.Text("Voulez-vous vraiment vous déconnecter ?",
                                          size=16, weight=ft.FontWeight.BOLD, color=NOIR,
-                                         text_align=ft.TextAlign.CENTER), padding=ft.Padding(34, 0, 34, 30)),
+                                         text_align=ft.TextAlign.CENTER), padding=ft.padding.only(left=34, top=0, right=34, bottom=30)),
             btn_noir("Se déconnecter", lambda _: go("onboarding")),
             btn_lien("Annuler", lambda _: go("profil")),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=12))
@@ -726,7 +726,7 @@ def main(page: ft.Page):
             ft.Container(height=10),
             ft.Row([btn_retour(lambda _: go("profil"))], alignment=ft.MainAxisAlignment.START),
             ft.Container(content=ft.Text("Changer mon mot de passe", size=20, weight=ft.FontWeight.BOLD, color=NOIR),
-                         padding=ft.Padding(24, 0, 24, 10)),
+                         padding=ft.padding.only(left=24, top=0, right=24, bottom=10)),
             a, n, cf, btn_noir("Enregistrer", save), res, ft.Container(height=20),
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=12))
 
@@ -740,13 +740,13 @@ def main(page: ft.Page):
                                 color=couleurs.get(it["statut"], GRIS_TXT))]),
                 ft.Text(f"Expert : {it['maitre']}", size=12, color="#475569"),
                 ft.Text(it["date"], size=11, color="#9AA3AF")], spacing=3),
-                bgcolor="white", border=ft.Border.all(1, "#EAECEF"), border_radius=16,
-                padding=14, margin=ft.Margin(22, 0, 22, 10), width=332))
+                bgcolor="white", border=ft.border.all(1, "#EAECEF"), border_radius=16,
+                padding=14, margin=ft.margin.only(left=22, top=0, right=22, bottom=10), width=332))
         phone_body.controls.extend([
             ft.Container(height=10),
             ft.Row([btn_retour(lambda _: go("profil"))], alignment=ft.MainAxisAlignment.START),
             ft.Container(content=ft.Text("Historique de mes activités", size=20, weight=ft.FontWeight.BOLD, color=NOIR),
-                         padding=ft.Padding(24, 0, 24, 14)),
+                         padding=ft.padding.only(left=24, top=0, right=24, bottom=14)),
             ft.Column(lignes, horizontal_alignment=ft.CrossAxisAlignment.CENTER)])
 
     def ec_parrainage():
@@ -758,15 +758,15 @@ def main(page: ft.Page):
             ft.Text("Votre code de parrainage", size=12, color=GRIS_TXT),
             ft.Text(code, size=24, weight=ft.FontWeight.BOLD, color=BLEU_FONCE)],
             horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=6),
-            bgcolor="white", border=ft.Border.all(2, BLEU), border_radius=18,
-            padding=24, margin=ft.Margin(22, 0, 22, 20), width=332)
+            bgcolor="white", border=ft.border.all(2, BLEU), border_radius=18,
+            padding=24, margin=ft.margin.only(left=22, top=0, right=22, bottom=20), width=332)
         phone_body.controls.append(ft.Column([
             ft.Container(height=10),
             ft.Row([btn_retour(lambda _: go("profil"))], alignment=ft.MainAxisAlignment.START),
             ft.Container(content=ft.Text("Parrainez vos proches 🎁", size=20, weight=ft.FontWeight.BOLD, color=NOIR),
-                         padding=ft.Padding(24, 0, 24, 6)),
+                         padding=ft.padding.only(left=24, top=0, right=24, bottom=6)),
             ft.Container(content=ft.Text("Partagez votre code et gagnez des réductions.", size=13, color=GRIS_TXT),
-                         padding=ft.Padding(24, 0, 24, 20)),
+                         padding=ft.padding.only(left=24, top=0, right=24, bottom=20)),
             carte, btn_noir("Copier le code", copier), res,
         ], horizontal_alignment=ft.CrossAxisAlignment.CENTER, spacing=8))
 
@@ -797,7 +797,7 @@ def main(page: ft.Page):
     # ----- CADRE SMARTPHONE -----
     phone_frame = ft.Container(
         width=384, height=770, bgcolor="white", border_radius=38,
-        border=ft.Border.all(2, "#D7DCE3"),
+        border=ft.border.all(2, "#D7DCE3"),
         shadow=ft.BoxShadow(blur_radius=24, color="#C3CAD4"),
         clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
         content=ft.Column([phone_body, bottom_container], spacing=0))
